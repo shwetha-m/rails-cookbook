@@ -1,1 +1,21 @@
 <h2><%= @category.name %></h2>
+
+<ul>
+  <% @category.bookmarks.each do |bookmark| %>
+    <li>
+      <p>
+      <%= bookmark.recipe.name %>
+      <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+      <i class="fa-sharp-duotone fa-solid fa-trash-can"></i>
+      <% end %>
+      </p>
+      <p><%= bookmark.recipe.description %></p>
+      <img src="<%= bookmark.recipe.image_url %>" alt="<%= bookmark.recipe.name %>" width=200px height=150px>
+      <p><%= '⭐' * bookmark.recipe.rating %></p>
+    </li>
+  <% end %>
+</ul>
+
+
+<p><%= link_to "Add new recipe", new_category_bookmark_path(@category) %></p>
+<p><%= link_to "Back to categories", categories_path %></p>
