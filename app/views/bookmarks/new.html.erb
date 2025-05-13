@@ -1,11 +1,13 @@
-<h2>Add receipe to the <%= @category.name %></h2>
+<div class="form-center mt-5">
+  <h2>Add a Receipe to <%= @category.name %></h2>
 
+  <%= simple_form_for [@category, @bookmark] do |f| %>
+    <%= f.association :recipe %>
+    <%= f.input :comment %>
+    <%= f.submit class: "btn btn-warning"%>
+  <% end %>
 
-<%= simple_form_for [@category, @bookmark] do |f| %>
-  <%= f.association :recipe %>
-  <%= f.input :comment %>
-  <%= f.submit class: "btn btn-primary"%>
-<% end %>
-<br>
-<p><%= link_to "Back to #{@category.name} recipes", category_path(@category) %></p>
-<p><%= link_to "Main page", categories_path %></p>
+  <div class="pt-3">
+    <%= link_to "Back to #{@category.name} recipes", category_path(@category) %>
+  <div>
+</div>

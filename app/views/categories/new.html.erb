@@ -1,8 +1,8 @@
-<h2>Create new Category</h2>
+<div class="form-center mt-5">
+  <h2>Add a new Category</h2>
 
-<%= simple_form_for(@category) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit "Create new category", class: "btn btn-primary"%>
-<% end %>
-<br>
-<p><%= link_to "Back", categories_path %></p>
+  <%= simple_form_for(@category) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Create Category", class: "btn btn-warning"%>
+  <% end %>
+<div>

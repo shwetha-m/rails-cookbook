@@ -1,24 +1,37 @@
-<%= render "shared/banner" %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://images.pexels.com/photos/20284286/pexels-photo-20284286/free-photo-of-local-store-in-italy.jpeg)">
+  <div>
+    <h1><%= @category.name.upcase %></h1>
+  </div>
+</div>
 
-<h2><%= @category.name %></h2>
+<div class="container w-75 mb-5">
+  <div class="info-top">
+    <h2><%= @category.name %> recipes</h2>
+    <%= link_to "Add a recipe", new_category_bookmark_path(@category), class:"btn btn-warning" %>
+  </div>
 
-<ul>
-  <% @category.bookmarks.each do |bookmark| %>
-    <li>
-      <p>
-      <%= bookmark.recipe.name %>
-      <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
-      <i class="fa-sharp-duotone fa-solid fa-trash-can"></i>
-      <% end %>
-      </p>
-      <p><%= bookmark.recipe.description %></p>
-      <img src="<%= bookmark.recipe.image_url %>" alt="<%= bookmark.recipe.name %>" width=200px height=150px>
-      <p><%= bookmark.recipe.rating %></p>
-      <%# '⭐' * bookmark.recipe.rating %>
-    </li>
-  <% end %>
-</ul>
+  <div class="cards">
+    <% @category.bookmarks.each do |bookmark| %>
+      <div class="card-trip">
+        <img src="<%= bookmark.recipe.image_url %>" alt="<%= bookmark.recipe.name %>">
+        <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class:"btn-delete" do %>
+          <i class="fa-sharp-duotone fa-regular fa-trash-can"></i>
+        <% end %>
+        <div class="card-trip-description">
+          <h2><%= bookmark.recipe.name %></h2>
+          <p><%= bookmark.recipe.description.truncate(100) %></p>
+        </div>
 
+        <div class="card-trip-infos">
+          <div>
+            <p><strong class="quot-bold">“</strong> <%= bookmark.comment %></p>
+          </div>
 
-<p><%= link_to "Add new recipe", new_category_bookmark_path(@category) %></p>
-<p><%= link_to "Back to categories", categories_path %></p>
+          <div>
+            <%= bookmark.recipe.rating %> <%= '⭐' * bookmark.recipe.rating.floor %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
