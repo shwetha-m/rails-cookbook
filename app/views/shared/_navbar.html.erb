@@ -1,0 +1,15 @@
+<%# <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3"> %>
+<nav id="navbar-example2" class="navbar bg-body px-3">
+  <%= link_to categories_path do %>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhrGds2qxYp3syFi7EQCUYHpn-eq3TQidHg&s" alt="cookbook logo" width="40px">
+  <% end %>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <%= link_to "Home", categories_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "New category",  new_category_path, class:"nav-link" %>
+    </li>
+  </ul>
+</nav>

@@ -1,3 +1,5 @@
+<%= render "shared/banner" %>
+
 <h2><%= @category.name %></h2>
 
 <ul>
@@ -11,7 +13,8 @@
       </p>
       <p><%= bookmark.recipe.description %></p>
       <img src="<%= bookmark.recipe.image_url %>" alt="<%= bookmark.recipe.name %>" width=200px height=150px>
-      <p><%= '⭐' * bookmark.recipe.rating %></p>
+      <p><%= bookmark.recipe.rating %></p>
+      <%# '⭐' * bookmark.recipe.rating %>
     </li>
   <% end %>
 </ul>
