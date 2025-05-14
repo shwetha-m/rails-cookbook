@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://images.pexels.com/photos/20284286/pexels-photo-20284286/free-photo-of-local-store-in-italy.jpeg)">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= cl_image_path @category.photo.key %>')">
   <div>
     <h1><%= @category.name.upcase %></h1>
   </div>
